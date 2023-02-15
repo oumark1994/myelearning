@@ -30,7 +30,16 @@ public function index(){
         $videos = $course->videos;
         $lessons = $course->lessons;
         // return ($lessons);
-        $categories = Category::with('subcategories')->get(); 
-        return view('home.course')->with('categories',$categories)->with('data',$data)->with('course',$course)->with('lessons',$lessons)->with('videos',$videos);
+         
+        return view('home.course')->with('data',$data)->with('course',$course)->with('lessons',$lessons)->with('videos',$videos);
+    }
+    function header(){
+        $data = array();
+        if(Session::has('loggedInUser')){
+            $data = UserAuth::where('id','=',Session::get('loggedInUser'))->first();
+        }
+        $categories = Category::with('subcategories')->get();
+        return view('global.template',compact('data'))->with('categories',$categories);
+        
     }
 }

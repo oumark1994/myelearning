@@ -61,7 +61,7 @@
         {{-- <i class="bi bi-list toggle-sidebar-btn"></i> --}}
       </div><!-- End Logo -->
       <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
+        <ul class="d-flex align-items-center justify-content-around ">
           <li class="nav-item dropdown">
   
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -90,8 +90,8 @@
       </a><!-- End Notification Icon -->
     </li><!-- End Notification Nav --> 
     @elseif ($data->role === 0)
-    <li>
-    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+    <li class="me-2">
+    <a class="" href="{{url('/beinstructor')}}">
       Be Instructor
       </a><!-- End Notification Icon -->
     </li><!-- End Notification Nav -->
@@ -116,7 +116,7 @@
   @endif
           
   
-            <ul class="dropdown-menu dropdown-menu-end me-5 dropdown-menu-arrow profile mt-4">
+            <ul class="dropdown-menu dropdown-menu-end me-5 dropdown-menu-arrow profile mt-3">
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                   <i class="bi bi-person"></i>

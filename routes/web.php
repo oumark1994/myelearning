@@ -9,6 +9,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\InstructorController;
 
 
 /*
@@ -25,6 +26,7 @@ use App\Http\Controllers\VideoController;
 //home routes
 
 Route::get('/',[HomeController::class,'index'])->name('home')->middleware('notloggedIn');
+Route::get('/header',[HomeController::class,'header'])->name('header')->middleware('notloggedIn');
 Route::get('/course/{id}',[HomeController::class,'course'])->name('course');
 Route::get('/login',[UserController::class,'login'])->name('login')->middleware('loggedIn');
 Route::get('/register',[UserController::class,'register'])->name('register')->middleware('loggedIn');
@@ -76,4 +78,9 @@ Route::post('/createvideo',[VideoController::class,'create'])->name('create.vide
 Route::put('/updatevideo/{id}',[VideoController::class,'update'])->name('update.video')->middleware('notloggedIn');
 Route::get('/delete.video/{id}',[VideoController::class,'delete'])->name('delete.video')->middleware('notloggedIn');
 Route::get('/edit.video/{id}',[VideoController::class,'edit'])->name('edit.video')->middleware('notloggedIn');
-// Route::get('/getlesson',[VideoController::class,'getlesson'])->name('getlesson')->middleware('notloggedIn');
+ Route::get('/getlesson',[VideoController::class,'getlesson'])->name('getlesson')->middleware('notloggedIn');
+ 
+ //instructor
+ Route::get('/beinstructor',[InstructorController::class,'index'])->name('beinstructor')->middleware('notloggedIn');
+ Route::get('/application',[InstructorController::class,'application'])->name('application')->middleware('notloggedIn');
+
