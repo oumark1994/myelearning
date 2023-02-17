@@ -1,116 +1,40 @@
 <div class="col-lg-8">
-    <form class="row justify-content-center align-items-center g-3">
-    <div class="step-one">
-    <div  class="card">
-        <div class="card-body">
-          <h5 class="card-title">Personal Detail</h5>
-
-          <!-- Multi Columns Form -->
-          <div class="row">
-            <div class="col-md-6 py-3 ">
-              <label for="inputName5" class="form-label">First Name</label>
-              <input type="text" name="firstname" class="form-control" id="inputName5" placeholder="Enter your firstname">
-            </div>
-            <div class="col-md-6 py-3">
-              <label for="inputEmail5" class="form-label">Last Name</label>
-              <input type="text" name="lastname" class="form-control" id="inputName5" placeholder="Enter your lastname">
-            </div>
-            <div class="col-md-6 py-3">
-              <label for="inputPassword5" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputPassword5"  name="email" placeholder="Enter your email">
-            </div>
-            <div class="col-md-6 py-3">
-              <label for="inputAddress5" class="form-label">Location</label>
-              <input type="text" class="form-control" id="inputAddres5s" name="address" placeholder="Enter your location or address">
-            </div>
-          </div>
-        </div>
-        </div>
-            
-        </div>
-        <div class="step-two">
-            <div  class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Course Detail</h5>
-        
-                  <!-- Multi Columns Form -->
-                  <div class="row">
-                    <div class="col-md-12 py-3">
-                      <label for="inputPassword5" class="form-label">Which topic would you like to teach?</label>
-                      <input type="text" class="form-control" id="inputPassword5"  name="subject" placeholder="Enter topic of interest">
-                    </div>
-                    <div class="col-md-12 py-3 ">
-                      <label for="inputName5" class="form-label">Which language(s) would you feel confortable teaching in?</label>
-                      <input type="text" name="language" class="form-control" id="inputName5" placeholder="Enter your language">
-                    </div>
-                    <div class="col-md-12 py-3">
-                      <label for="inputEmail5" class="form-label">When are you available to start your class ?</label>
-                      <select id="inputState" name="availibility" class="form-select">
-                        <option selected value="immediately">Immediately</option>
-                        <option  value="later_this_month">Later this month</option>
-                        <option  value="nextmonth">Next month</option>
-                        <option  value="later_this_year">Later this year</option>
-
-                      </select>                   
-                     </div>
-                  </div>
-                
-     
-                </div>
-                </div>
-                    
-                </div>
-                <div class="step-three">
-                    <div  class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Course Detail(2)</h5>
-                
-                          <!-- Multi Columns Form -->
-                          <div class="row">
-                           
-                            <div class="col-md-12 py-3">
-                              <label for="inputAddress5" class="form-label">Underline in 1 to 3 sentences why you are interested teaching at Maximum Impact?</label>
-                              <textarea name="description" id="" class="form-control" cols="30" rows="10"></textarea>
-                            </div>
-                            <div class="col-md-12 py-3">
-                                <label for="inputAddress5" class="form-label">What are some of key lessons you would include in your class ?</label>
-                                <textarea name="description" id="" class="form-control" cols="30" rows="6"></textarea>
+    <form wire:submit.prevent="submitapplicatiion" enctype="multipart/form-data" method="post"  class="row justify-content-center align-items-center g-3">
+    @if($currentStep==1)
+        @include('livewire.stepone')
+    @elseif($currentStep==2)
+        @include('livewire.steptwo')
+    @elseif($currentStep==3)
+       @include('livewire.steptree')
+    @elseif($currentStep==4)
+      @include('livewire.stepfour')
+    @endif
+                        {{-- @if ($currentStep == 5)
+                        <div class="step-five">
+                          <div  class="card">
+                            <h5 class="card-title">Congratulations</h5>
+                              <div class="card-body">
+                                <div class="row">
+                                <h3>Your application  has been successfully has been received.We are going to review it and approve it</h3> 
+                                </div>
                               </div>
                           </div>
-                        
-             
                         </div>
-                        </div>
-                            
-                </div>
-                <div class="step-four">
-                    <div  class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Course link(s)</h5>
-                
-                          <!-- Multi Columns Form -->
-                          <div class="row">
-                            <div class="col-md-12 py-3 ">
-                              <label for="inputName5" class="form-label">Website Link:Share a link where we can view your work.</label>
-                              <input type="text" name="website_link" class="form-control" id="inputName5" placeholder="Website link related to what you would like to teach.">
-                            </div>
-                            <div class="col-md-12 py-3">
-                              <label for="inputEmail5" class="form-label">Video Sample Link</label>
-                              <input type="text" name="video_link" class="form-control" id="inputName5" placeholder="Enter your lastname">
-                            </div>
-                          
-                            
-                          </div>
-                        </div>
-                        </div>
-                            
-                        </div>
-        <div class="text-center my-2">
-            <button type="reset" class="btn btn-outline-info">Back</button>
-            <button type="reset" class="btn btn-outline-primary">Next</button>
+                   @endif --}}
+    <div class="d-flex justify-content-between my-2">
+          @if ($currentStep == 1)
+          <div></div> 
+          @endif
+          @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+          <button type="button" class="btn btn-outline-info" wire:click="decreaseStep()">Back</button>
+          @endif
+          @if ($currentStep == 1 || $currentStep == 2 || $currentStep ==3)
+            <button type="button" class="btn btn-outline-primary" wire:click="increaseStep()">Next</button>
+          @endif
+          @if ($currentStep == 4)
             <button type="submit" class="btn  btn-outline-secondary">Submit</button>
-
-          </div>
+          @endif
+      </div>
 
         </div>
         

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('video_link');
             $table->string('availibility');
             $table->string('language');
+            $table->integer('status');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('user_auths')->onDelete('cascade');
             $table->timestamps();

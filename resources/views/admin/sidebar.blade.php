@@ -42,7 +42,25 @@
           
           
         </ul>
-      </li><!-- End Components Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#instructors" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-list-check"></i><span>Course Instructors</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="instructors" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{url('/applications')}}">
+              <i class="bi bi-circle"></i><span>Applications</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/subcategories')}}">
+              <i class="bi bi-circle"></i><span>Instructors</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End Components Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

@@ -12,4 +12,7 @@ class UserAuth extends Model
     public function courses(){
         return $this->hasMany(Course::class);
     }
+    public function instructor(){
+        return $this->hasOne(Instructorapplication::class);
+    }
 }

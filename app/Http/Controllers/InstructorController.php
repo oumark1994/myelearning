@@ -29,4 +29,7 @@ class InstructorController extends Controller
         return view('instructor.application',compact('data'))->with('categories',$categories);
 
     }
+    public function successapplication(){
+        return view('instructor.successapplication');
+    }
 }

@@ -50,7 +50,15 @@ Route::put('/update.subcategory/{id}',[SubcategoryController::class,'update'])->
 Route::get('/add.subcategory',[SubcategoryController::class,'add'])->name('add.subcategory');
 Route::get('/delete.subcategory/{id}',[SubcategoryController::class,'delete'])->name('delete.subcategory');
 // Route::post('/api/create-category',[CourseCategory::class,'create']);
+//admin
 Route::get('/admin',[AdminController::class,'index'])->name('admin');
+Route::get('/applications',[AdminController::class,'applications'])->name('applications');
+Route::get('/approved/{id}',[AdminController::class,'approved'])->name('approved');
+Route::get('/view.application/{id}',[AdminController::class,'view'])->name('viewapplication');
+Route::get('/delete.application/{id}',[AdminController::class,'delete'])->name('deleteapplication');
+
+
+
 
 //Course routes
 // Route::get('/course',[CourseController::class,'index'])->name('course')->middleware('notloggedIn');
@@ -83,4 +91,5 @@ Route::get('/edit.video/{id}',[VideoController::class,'edit'])->name('edit.video
  //instructor
  Route::get('/beinstructor',[InstructorController::class,'index'])->name('beinstructor')->middleware('notloggedIn');
  Route::get('/application',[InstructorController::class,'application'])->name('application')->middleware('notloggedIn');
+ Route::get('/successapplication',[InstructorController::class,'successapplication'])->name('successapplication')->middleware('notloggedIn');
 

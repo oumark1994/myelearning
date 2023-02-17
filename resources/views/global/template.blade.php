@@ -40,6 +40,7 @@
  
      <!-- Template Stylesheet -->
      <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
+     @livewireStyles
 </head>
 
 <body>
@@ -154,6 +155,8 @@
 
   <!-- Template Javascript -->
   <script src="{{asset('assets/frontend/js/main.js')}}"></script>
+  @livewireScripts
+
 
   {{-- <script>
    $('.owl-carousel').owlCarousel({
