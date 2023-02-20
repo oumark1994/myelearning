@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -28,6 +27,7 @@ use App\Http\Controllers\InstructorController;
 Route::get('/',[HomeController::class,'index'])->name('home')->middleware('notloggedIn');
 Route::get('/header',[HomeController::class,'header'])->name('header')->middleware('notloggedIn');
 Route::get('/course/{id}',[HomeController::class,'course'])->name('course');
+Route::get('/mycourse',[HomeController::class,'mycourse'])->name('mycourse');
 Route::get('/login',[UserController::class,'login'])->name('login')->middleware('loggedIn');
 Route::get('/register',[UserController::class,'register'])->name('register')->middleware('loggedIn');
 Route::post('/signup',[UserController::class,'signup'])->name('signup');
@@ -51,14 +51,12 @@ Route::get('/add.subcategory',[SubcategoryController::class,'add'])->name('add.s
 Route::get('/delete.subcategory/{id}',[SubcategoryController::class,'delete'])->name('delete.subcategory');
 // Route::post('/api/create-category',[CourseCategory::class,'create']);
 //admin
-Route::get('/admin',[AdminController::class,'index'])->name('admin');
+Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('adminRoute');
 Route::get('/applications',[AdminController::class,'applications'])->name('applications');
 Route::get('/approved/{id}',[AdminController::class,'approved'])->name('approved');
 Route::get('/view.application/{id}',[AdminController::class,'view'])->name('viewapplication');
 Route::get('/delete.application/{id}',[AdminController::class,'delete'])->name('deleteapplication');
-
-
-
+Route::get('/instructors',[AdminController::class,'instructors'])->name('instructors');
 
 //Course routes
 // Route::get('/course',[CourseController::class,'index'])->name('course')->middleware('notloggedIn');
@@ -70,7 +68,6 @@ Route::get('/delete.course/{id}',[CourseController::class,'delete'])->name('dele
 Route::get('/view.course/{id}',[CourseController::class,'view'])->name('view.course');
 Route::get('/edit.course/{id}',[CourseController::class,'edit'])->name('edit.course');
 Route::get('/subcategory',[CourseController::class,'subcategory'])->name('subcategory');
-
 //Lessons routes
 Route::get('/lessons',[LessonController::class,'index'])->name('lessons')->middleware('notloggedIn');
 Route::get('/addlesson',[LessonController::class,'add'])->name('add.lesson')->middleware('notloggedIn');
@@ -78,7 +75,6 @@ Route::post('/createlesson',[LessonController::class,'create'])->name('create.le
 Route::put('/updatelesson/{id}',[LessonController::class,'update'])->name('update.lesson')->middleware('notloggedIn');
 Route::get('/delete.lesson/{id}',[LessonController::class,'delete'])->name('delete.lesson')->middleware('notloggedIn');
 Route::get('/edit.lesson/{id}',[LessonController::class,'edit'])->name('edit.lesson')->middleware('notloggedIn');
-
 //videos routes
 Route::get('/videolessons',[VideoController::class,'index'])->name('videos')->middleware('notloggedIn');
 Route::get('/addvideo',[VideoController::class,'add'])->name('add.video')->middleware('notloggedIn');
@@ -86,10 +82,13 @@ Route::post('/createvideo',[VideoController::class,'create'])->name('create.vide
 Route::put('/updatevideo/{id}',[VideoController::class,'update'])->name('update.video')->middleware('notloggedIn');
 Route::get('/delete.video/{id}',[VideoController::class,'delete'])->name('delete.video')->middleware('notloggedIn');
 Route::get('/edit.video/{id}',[VideoController::class,'edit'])->name('edit.video')->middleware('notloggedIn');
- Route::get('/getlesson',[VideoController::class,'getlesson'])->name('getlesson')->middleware('notloggedIn');
- 
+Route::get('/getlesson',[VideoController::class,'getlesson'])->name('getlesson')->middleware('notloggedIn');
  //instructor
  Route::get('/beinstructor',[InstructorController::class,'index'])->name('beinstructor')->middleware('notloggedIn');
  Route::get('/application',[InstructorController::class,'application'])->name('application')->middleware('notloggedIn');
  Route::get('/successapplication',[InstructorController::class,'successapplication'])->name('successapplication')->middleware('notloggedIn');
+ Route::get('/instructordashboard',[InstructorController::class,'dashboard'])->name('instructordashboard')->middleware('notloggedIn')->middleware('instructorRoute');
+ Route::get('/instructorcreateclass',[InstructorController::class,'createclass'])->name('instructorcreateclass')->middleware('notloggedIn')->middleware('instructorRoute');
+ Route::post('/instructoraddcourse',[InstructorController::class,'instructoraddcourse'])->name('instructoraddcourse')->middleware('notloggedIn')->middleware('instructorRoute');
 
+ 

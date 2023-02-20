@@ -90,9 +90,22 @@
       </a><!-- End Notification Icon -->
     </li><!-- End Notification Nav --> 
     @elseif ($data->role === 0)
-    <li class="me-2">
-    <a class="" href="{{url('/beinstructor')}}">
-      Be Instructor
+    <li  class="me-4">
+      <a class="" href="{{url('/beinstructor')}}">
+        Be Instructor
+        </a>
+    </li>
+    <li  class="me-4">
+      <a class="" href="{{url('/mycourse')}}">
+          My Class
+      </a><!-- End Notification Icon -->
+    </li>
+    @elseif($data->role ===0)
+  <!-- End Notification Nav -->
+    @elseif($data->role === 1)
+    <li class="me-4">
+    <a class="" href="{{url('/instructordashboard')}}">
+     My Courses
       </a><!-- End Notification Icon -->
     </li><!-- End Notification Nav -->
      @endif
@@ -117,19 +130,22 @@
           
   
             <ul class="dropdown-menu dropdown-menu-end me-5 dropdown-menu-arrow profile mt-3">
-              <li>
+              {{-- <li>
                 <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
               </li>
-              
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+               --}}
+               @if ($data->role == 1)
+               <li>
+                <a class="dropdown-item d-flex align-items-center" href="{{url('/instructordashboard')}}">
                   <i class="bi bi-book"></i>
-                  <span>My Classes</span>
+                  <span>My Courses</span>
                 </a>
               </li>
+               @endif
+           
              
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}">

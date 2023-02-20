@@ -1,8 +1,8 @@
 @extends('global.template')
 @section('contents')
  <!-- Header Start -->
- @include('global.header')
- <div class="container-fluid bg-primary py-5 mb-5 page-header-instructor">
+ @include('admin.sidebar')
+  <div class="container-fluid bg-primary py-5 mb-5 page-header-instructor">
     <div class="container py-5">
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-10 text-center">

@@ -133,10 +133,11 @@ public function delete($id){
 
 }
 public function view($id){
+    $categories = Category::get(); 
     $course = Course::find($id);
 
   
-    return view('admin.viewcourse')->with('course',$course);
+    return view('admin.viewcourse')->with('course',$course)->with('categories',$categories);
 
 }
 public function edit($id){

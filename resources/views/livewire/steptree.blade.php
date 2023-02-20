@@ -16,6 +16,7 @@
                 <textarea name="lessons"  wire:model="lessons"  class="form-control" cols="30" rows="6"></textarea>
                 <span class="text-danger">@error('lessons'){{$message}}@enderror</span>
               </div>
+             
           </div>
         
 

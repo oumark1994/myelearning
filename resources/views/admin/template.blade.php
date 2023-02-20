@@ -95,15 +95,18 @@
   @livewireScripts
   <script type="text/javascript">
     $(document).ready(function () {
-      // var subcategory = $('#inputSubcategory');
+      // var subcategory = $('#inputSubcategory')
+      $('#sub').hide();
         $('#inpuCategory').on('change',function(){
             var category_id = this.value;
+           
             $.ajax({
                 url:"{{route('subcategory')}}",
                 data:{
                   category_id:$(this).val()
                 },
                 success: function (res) {
+                  $('#sub').show();
                     $('#inputSubcategory').html('<option value="">Select Subcategory</option>');
                     $.each(res, function (key, value) {
                       $('#inputSubcategory').append('<option value="'+ value.id + '">' + value.title + '</option>');
@@ -188,6 +191,27 @@
         });
       });
     </script>
+      <script>
+        $(document).ready(function(){
+          var bar = $('.inbar');
+          var percent = $('.inpercent');
+          $('form').ajaxForm({
+            beforeSend:function(){
+              var percentVal='0%';
+              bar.width(percentVal);
+              percent.html(percentVal);
+            },
+            uploadProgress:function(event,position,total,percentComplete){
+              var percentVal=percentComplete+'%';
+              bar.width(percentVal);
+              percent.html(percentVal);
+            },
+            complete:function(){
+              window.location.href="{{url('/instructordashboard')}}";
+            }
+          });
+        });
+      </script>
 
   {{-- <script>
    $('.owl-carousel').owlCarousel({

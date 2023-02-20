@@ -136,6 +136,7 @@
 
   <!-- Vendor JS Files -->
   <script src="{{asset('assets/js/jquery.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
   <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
@@ -152,11 +153,35 @@
   <script src="{{asset('assets/frontend/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('assets/frontend/lib/waypoints/waypoints.min.js')}}"></script>
   <script src="{{asset('assets/frontend/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
   <!-- Template Javascript -->
   <script src="{{asset('assets/frontend/js/main.js')}}"></script>
   @livewireScripts
+  <script>
+    $(document).ready(function(){
+      var bar = $('.bar');
+      var percent = $('.percent');
+        $("#upload").click(function(){
+         $('form').ajaxForm({
+        beforeSend:function(){
+          var percentVal='0%';
+          bar.width(percentVal);
+          percent.html(percentVal);
+        },
+        uploadProgress:function(event,position,total,percentComplete){
+          var percentVal=percentComplete+'%';
+          bar.width(percentVal);
+          percent.html(percentVal);
+        },
+        complete:function(){
+          window.location.href="{{url('/videolessons')}}";
+        }
+      });
 
+});
+     
+      
+    });
+  </script>
 
   {{-- <script>
    $('.owl-carousel').owlCarousel({

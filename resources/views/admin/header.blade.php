@@ -18,18 +18,20 @@
   
     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
       <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-      <span class="d-none d-md-block dropdown-toggle ps-2">Admin1</span>
+      <span class="d-none d-md-block dropdown-toggle ps-2">@if ($data)
+        {{$data->firstname}}
+      @endif</span>
     </a><!-- End Profile Iamge Icon -->
               <ul class="dropdown-menu dropdown-menu-end me-5 dropdown-menu-arrow profile mt-4">
-                <li>
+                {{-- <li>
                   <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                     <i class="bi bi-person"></i>
                     <span>My Profile</span>
                   </a>
-                </li>
+                </li> --}}
                 
                 <li>
-                  <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{url('instructordashboard')}}">
                     <i class="bi bi-book"></i>
                     <span>My Classes</span>
                   </a>
